@@ -102,3 +102,10 @@ Công việc cá nhân không bị ràng buộc phân quyền.
 ```
 ---
 ## Cài đặt môi trường
+
+```
+cd np-server/
+npm i
+docker-compose up -d 
+npm run dev
+```

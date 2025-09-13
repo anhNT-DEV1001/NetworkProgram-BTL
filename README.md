@@ -104,8 +104,30 @@ Công việc cá nhân không bị ràng buộc phân quyền.
 ## Cài đặt môi trường
 ### 
 ```
+----- database----
+cd .\np-server\
+docker-compose up -d
+docker exec -it mongo1 mongosh
+rs.initiate({
+  _id: "rs0",
+  members: [
+    { _id: 0, host: "mongo1:27017" },
+    { _id: 1, host: "mongo2:27017" },
+    { _id: 2, host: "mongo3:27017" }
+  ]
+})
+
+cfg = rs.conf()
+cfg.members[0].priority = 2   // mongo1
+cfg.members[1].priority = 1   // mongo2
+cfg.members[2].priority = 1   // mongo3
+rs.reconfig(cfg)
+
+rs.status()
+
+
 ----- server -----
-cd np-server/
+cd .\np-server\
 npm i
 docker-compose up -d 
 npm run dev

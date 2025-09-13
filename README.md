@@ -125,11 +125,13 @@ rs.reconfig(cfg)
 
 rs.status()
 
+==> Mongo uri thành quả: uri: mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rs0
+
 
 ----- server -----
 cd .\np-server\
 npm i
-docker-compose up -d 
+docker-compose up -d (chạy lệnh này nếu container trong docker không chạy, nếu lỗi cần kiểm tra docker desktop)
 npm run dev
 
 ----- client -----

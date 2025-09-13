@@ -102,10 +102,17 @@ Công việc cá nhân không bị ràng buộc phân quyền.
 ```
 ---
 ## Cài đặt môi trường
-
+### 
 ```
+----- server -----
 cd np-server/
 npm i
 docker-compose up -d 
 npm run dev
+
+----- client -----
+cd .\np-client\
+npm i
+npm run dev
+
 ```

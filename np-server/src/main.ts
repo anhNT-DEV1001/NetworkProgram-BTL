@@ -8,6 +8,7 @@ import { SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   app.setGlobalPrefix(API_PRIFIX);
   app.enableCors(corsConfig);
   app.useGlobalPipes(new ValidationPipe(validationConfig));

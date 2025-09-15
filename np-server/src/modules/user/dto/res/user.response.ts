@@ -10,4 +10,8 @@ export class UserResponse extends TimeStamp {
     role: string;
     @ApiProperty()
     status: string;
+    @ApiProperty()
+    name?: string
+    @ApiProperty()
+    dob?: Date;
 }

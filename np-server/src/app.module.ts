@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { envVariable } from './config';
 import { HealthController } from './modules/health/health.controller';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -12,7 +13,8 @@ import { UserModule } from './modules/user/user.module';
       load: [envVariable]
     }),
     DatabaseModule,
-    UserModule
+    UserModule,
+    AuthModule
   ],
   controllers: [HealthController],
   providers: [],

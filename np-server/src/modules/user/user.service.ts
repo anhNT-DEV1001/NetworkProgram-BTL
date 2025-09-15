@@ -12,12 +12,14 @@ import { ApiError } from 'src/common/api';
 export class UserService {
     constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
 
-    private toUserResponse(user: UserDocument): UserResponse {
+    toUserResponse(user: UserDocument): UserResponse {
         return {
             id: user._id.toString(),
             email: user.email,
             role: user.role,
             status: user.status,
+            name: user.name,
+            dob: user.dob,
             createdAt: user.createdAt,
             updatedAt: user.updatedAt
         }
@@ -57,5 +59,17 @@ export class UserService {
         if (!user) throw new ApiError('Xóa người dùng thất bại !', HttpStatus.BAD_REQUEST);
         return this.toUserResponse(user);
 
+    }
+
+    async findUserByEmail(email: string): Promise<UserDocument> {
+        const user = await this.userModel.findOne({ email });
+        if (!user) throw new ApiError('Thông tin người dùng không tồn tại !', HttpStatus.BAD_REQUEST);
+        return user;
+    }
+
+    async findUserById(id: string): Promise<UserDocument> {
+        const user = await this.userModel.findById(id);
+        if (!user) throw new ApiError('Không tìm thấy thông tin người dùng !', HttpStatus.BAD_REQUEST);
+        return user;
     }
 }

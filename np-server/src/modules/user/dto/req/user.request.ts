@@ -29,6 +29,15 @@ export class CreateUserDto {
     @IsOptional()
     @IsEnum(UserStatus, { message: 'Trạng thái không hợp lệ !' })
     status?: UserStatus;
+
+    @ApiProperty()
+    @IsOptional()
+    @MaxLength(50, { message: 'Email có tối đa 50 ký tự !' })
+    name: string
+
+    @ApiProperty()
+    @IsOptional()
+    dob: Date
 }
 
 export class UpdateUserDto {
@@ -58,6 +67,15 @@ export class UpdateUserDto {
     @IsOptional()
     @IsEnum(UserStatus, { message: 'Trạng thái không hợp lệ !' })
     status?: UserStatus;
+
+    @ApiProperty()
+    @IsOptional()
+    @MaxLength(50, { message: 'Email có tối đa 50 ký tự !' })
+    name: string
+
+    @ApiProperty()
+    @IsOptional()
+    dob: Date
 }
 
 

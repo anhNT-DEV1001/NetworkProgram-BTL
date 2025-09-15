@@ -15,9 +15,6 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe(validationConfig));
   app.useGlobalFilters(new AllExceptionsFilter);
 
-  const reflector = app.get(Reflector);
-  app.useGlobalGuards(new JwtAuthGuard(reflector));
-
   const swaggerDoc = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup(API_PRIFIX, app, swaggerDoc);
   await app.listen(Number(process.env.PORT), '0.0.0.0');

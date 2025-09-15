@@ -4,6 +4,8 @@ import { CreateUserDto, UpdateUserDto } from './dto/req/user.request';
 import { UserResponse } from './dto/res/user.response';
 import { BaseResponse } from 'src/common/api';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/common/decorators/role.decorator';
+import { UserRole } from 'src/common/enums';
 
 @ApiTags('Users')
 @Controller('user')
@@ -28,6 +30,7 @@ export class UserController {
         status: 200,
         type: [UserResponse]
     })
+    @Roles(UserRole.ADMIN)
     async findAllUserController(): Promise<BaseResponse<UserResponse[]>> {
         const res = await this.userService.findAll();
         return {

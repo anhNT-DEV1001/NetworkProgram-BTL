@@ -33,6 +33,19 @@ services:
       - ./data/mongo3:/data/db
     networks:
       - mongo-cluster
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672        # cổng cho ứng dụng kết nối (AMQP)
+      - 15672:15672      # cổng quản trị web
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq
+    networks:
+      - mongo-cluster
 
 networks:
   mongo-cluster:

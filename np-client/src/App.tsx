@@ -1,9 +1,7 @@
+import AppRoutes from "./common/routes/AppRoute";
+import './style/global.css';
 function App() {
-  return (
-    <>
-      HI
-    </>
-  )
+  return <AppRoutes />;
 }
 
-export default App
+export default App;
